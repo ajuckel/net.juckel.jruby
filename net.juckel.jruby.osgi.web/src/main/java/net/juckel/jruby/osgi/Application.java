@@ -1,31 +1,28 @@
 package net.juckel.jruby.osgi;
 
-import java.util.HashMap;
+import java.io.IOException;
+import java.net.URL;
+import java.util.Enumeration;
+import java.util.HashSet;
 import java.util.Hashtable;
-import java.util.Map;
+import java.util.Set;
 
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
-import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
-import org.jruby.embed.osgi.OSGiScriptingContainer;
-import org.jruby.rack.DefaultRackDispatcher;
-import org.jruby.rack.RackServlet;
-import org.jruby.rack.servlet.ServletRackConfig;
-import org.jruby.rack.servlet.ServletRackContext;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.service.http.HttpContext;
 import org.osgi.service.http.HttpService;
-import org.osgi.service.http.NamespaceException;
 import org.osgi.util.tracker.ServiceTracker;
 
-public class Application implements IApplication, ServletContextListener {
+public class Application implements IApplication {
 
 	private ServiceTracker<HttpService, HttpService> httpServiceTracker;
 	private HttpContext httpContext;
+	private volatile boolean keepRunning = true;
 
 	//	@Override
 	public Object start(IApplicationContext context) throws Exception {
@@ -33,58 +30,60 @@ public class Application implements IApplication, ServletContextListener {
 		httpServiceTracker = new ServiceTracker<HttpService, HttpService>(bundle.getBundleContext(), HttpService.class.getName(), null);
 		httpServiceTracker.open();
 		HttpService httpService = (HttpService) httpServiceTracker.getService();
-		httpContext = httpService.createDefaultHttpContext();
-		System.out.println("!!!!!! <<>> " + this.getClass().getResource("/rack/handler/servlet.rb"));
-		// Thread.currentThread().setContextClassLoader(this.getClass().getClassLoader());
-		OSGiScriptingContainer engine = new OSGiScriptingContainer(bundle);
-		Map<String, String> environ = new HashMap<String, String>(engine.getEnvironment());
-		environ.put("GEM_HOME", "/WEB-INF/gems/");
-		engine.setEnvironment(environ);
-		engine.runScriptlet(bundle, "/src/main/ruby/foo.rb");
-		OsgiRackServlet servlet = new OsgiRackServlet();
-		// ServletContext ctx = servlet.getServletContext();
+		httpContext = new OSGiHttpContext(bundle);
+		OsgiRackServlet servlet = new OsgiRackServlet(bundle);
 		Hashtable<String, String> initParams = new Hashtable<String, String>();
-		initParams.put("jruby.compat.version", "1.9");
+		initParams.put("jruby.compat.version", "1.8");
+		httpService.registerResources("/", "/WEB-INF/static", httpContext);
 		httpService.registerServlet("/foo", servlet, initParams, httpContext);
-//		ServletRackContext rackContext = new ServletRackContext(new ServletRackConfig(null));
-//		RackServlet rackServlet = new RackServlet(new DefaultRackDispatcher(rackContext));
-//		httpService.registerServlet("/rack", new RackServlet(new DefaultRackDispatcher(rackContext)), null, httpContext);
-//		httpService.registerServlet("/rack", new RackServlet(new DefaultRackDispatcher(rackContext)), null, httpContext);
-		engine.put("foo", this.getClass().getClassLoader());
-		engine.put("out", System.out);
-		try {
-			String scriptPath = "/src/main/ruby/simple.rb";
-			Object returnValue =  engine.runScriptlet(bundle.getSymbolicName(), scriptPath);
-			System.out.println("Value: " + returnValue);
-			return Integer.valueOf(0);
-		} catch ( Exception e ) {
-			e.printStackTrace();
-			throw e;
+		while(keepRunning) {
+			try {
+				Thread.sleep(10);
+			} catch(InterruptedException ex) {
+				return Integer.valueOf(0);
+			}
 		}
+		return Integer.valueOf(0);
 	}
 
 //	@Override
 	public void stop() {
+		httpServiceTracker.close();
+		httpServiceTracker = null;
+		keepRunning = false;
 	}
-
-	@Override
-	public void contextInitialized(ServletContextEvent sce) {
-		HttpService httpService = (HttpService) httpServiceTracker.getService();
-		ServletRackContext rackContext = new ServletRackContext(new ServletRackConfig(sce.getServletContext()));
-		RackServlet rackServlet = new RackServlet(new DefaultRackDispatcher(rackContext));
-		try {
-			httpService.registerServlet("/rack", rackServlet, null, httpContext);
-		} catch (ServletException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NamespaceException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	
+	private class OSGiHttpContext implements HttpContext {
+		private Bundle bundle;
+		
+		public OSGiHttpContext(Bundle bundle) {
+			this.bundle = bundle;
 		}
-	}
 
-	@Override
-	public void contextDestroyed(ServletContextEvent sce) {
+		@Override
+		public boolean handleSecurity(HttpServletRequest request,
+				HttpServletResponse response) throws IOException {
+			return true;
+		}
 
+		@Override
+		public URL getResource(String name) {
+			return bundle.getResource(name);
+		}
+
+		@Override
+		public String getMimeType(String name) {
+			return null;
+		}
+		
+		@SuppressWarnings("unused")
+		public Set<String> getResourcePaths(String path) {
+			Enumeration<String> strings = bundle.getEntryPaths(path);
+			Set<String> stringSet = new HashSet<String>();
+			while(strings.hasMoreElements()) {
+				stringSet.add("/" + strings.nextElement());
+			}
+			return stringSet;
+		}
 	}
 }

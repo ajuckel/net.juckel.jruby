@@ -1,1 +1,8 @@
-run lambda { |env| [200, {'Content-type'=>'text/plain'},StringIO.new("Huzzah!")]}
+$LOAD_PATH << "classpath:/WEB-INF"
+puts "LOAD_PATH: #{$LOAD_PATH.join ","}"
+require 'sample_app'
+
+app = SampleApp.new
+map '/foo' do
+  run app
+end

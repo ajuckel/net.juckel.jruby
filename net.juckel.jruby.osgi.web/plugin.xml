@@ -12,4 +12,16 @@
          </run>
       </application>
    </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="net.juckel.jruby.osgi.web.id1"
+            name="Web Product">
+         <property
+               name="appName"
+               value="Web Product">
+         </property>
+      </product>
+   </extension>
 </plugin>

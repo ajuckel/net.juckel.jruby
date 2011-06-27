@@ -9,9 +9,9 @@
     </properties>
     <repositories>
         <repository>
-            <id>helios</id>
+            <id>indigo</id>
             <layout>p2</layout>
-            <url>http://download.eclipse.org/releases/helios</url>
+            <url>http://download.eclipse.org/releases/indigo</url>
         </repository>
         <repository>
             <id>jruby</id>
@@ -45,6 +45,9 @@
     </build>
     <modules>
         <module>net.juckel.jruby.osgi.web</module>
+        <module>net.juckel.jruby.osgi.slowcalc</module>
+        <module>net.juckel.jruby.osgi.fastcalc</module>
+        <module>net.juckel.jruby.osgi.logconfig</module>
         <module>org.jruby.jruby.feature</module>
         <module>org.jruby.jruby.repository</module>
     </modules>

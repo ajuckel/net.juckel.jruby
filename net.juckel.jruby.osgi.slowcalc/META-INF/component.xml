@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="net.juckel.jruby.osgi.slowcalc.slowcalc">
+   <implementation class="net.juckel.jruby.osgi.slowcalc.SlowCalculator"/>
+   <service>
+      <provide interface="net.juckel.jruby.osgi.ICalculator"/>
+   </service>
+</scr:component>

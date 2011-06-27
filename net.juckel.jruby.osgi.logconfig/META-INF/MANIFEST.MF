@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: net.juckel.jruby.osgi.logconfig
+Bundle-SymbolicName: net.juckel.jruby.osgi.logconfig
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Fragment-Host: ch.qos.logback.classic
