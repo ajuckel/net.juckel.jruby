@@ -35,7 +35,7 @@ public class Application implements IApplication {
 		Hashtable<String, String> initParams = new Hashtable<String, String>();
 		initParams.put("jruby.compat.version", "1.8");
 		httpService.registerResources("/", "/WEB-INF/static", httpContext);
-		httpService.registerServlet("/foo", servlet, initParams, httpContext);
+		httpService.registerServlet("/services", servlet, initParams, httpContext);
 		while(keepRunning) {
 			try {
 				Thread.sleep(10);

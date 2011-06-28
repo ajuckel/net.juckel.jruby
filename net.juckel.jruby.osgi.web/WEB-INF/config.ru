@@ -1,8 +1,7 @@
 $LOAD_PATH << "classpath:/WEB-INF"
-puts "LOAD_PATH: #{$LOAD_PATH.join ","}"
 require 'sample_app'
 
-app = SampleApp.new
-map '/foo' do
+app = SampleApp.new 'services'
+map '/services' do
   run app
 end

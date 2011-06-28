@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<link rel="stylesheet" href="/stylesheets/application.css">
+  </head>
+  <body>
+    <h1>JRuby OSGi Sample Dashboard</h1>  
+    <p>URL: <input type="text" id="url" value="/services/ruby/fib/20"></p>
+  <h2>Request Counts</h2>
+  <ul>
+    <li>Successes: <span id="successes"></span></li>
+    <li>Errors: <span id="errors"></span></li>
+  </ul>
+  <div id="last_resp"></div>
+  <div>Requests per second: <span  id="req_p_sec"></span></div>
+  <div><span id="expected"></span></div>
+  <ul id="button_bar">
+    <li><a href="#" id="toggle_test">Toggle Test</a></li>
+    <li><a href="#" id="stop_slow_calc">Stop Slow Calc</a></li>
+    <li><a href="#" id="start_slow_calc">Start Slow Calc</a></li>
+  </ul>
+  
+  <script type="text/javascript" src="/javascripts/jquery-1.6.1.min.js"></script>
+  <script type="text/javascript" src="/javascripts/application.js"></script>
+  </body>
+</html>

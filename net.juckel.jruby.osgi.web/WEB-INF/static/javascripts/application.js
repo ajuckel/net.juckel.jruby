@@ -19,8 +19,6 @@
                 200 : function(data) {
                     try {
                         var obj = $.parseJSON(data);
-                        $('#expected')
-                                .html("Is " + obj.value + " == " + expectedResult);
                         if (obj.value == expectedResult) {
                             successes += 1;
                         } else {
@@ -31,10 +29,10 @@
                     }
                     $('#successes').html(successes);
                     $('#errors').html(errors);
-                    $('#last_resp').html(
+                    $('#req_p_sec').html(
                             successes / ((new Date() - startTime) / 1000.0));
                     if (shouldRun) {
-                        runRequest();
+                        setTimeout(runRequest, 10);
                     }
                 },
                 204 : function() {
@@ -42,10 +40,10 @@
                     // service. Log as error.
                     errors += 1;
                     $('#errors').html(errors);
-                    $('#last_resp').html(
+                    $('#req_p_sec').html(
                             successes / ((new Date() - startTime) / 1000.0));
                     if (shouldRun) {
-                        runRequest();
+                        setTimeout(runRequest, 10);
                     }
                 }
             }
@@ -58,10 +56,10 @@
         // shouldRun = false;
     });
     $('#stop_slow_calc').click(function() {
-        $.ajax("/foo/stop/net.juckel.jruby.osgi.slowcalc");
+        $.ajax("/services/stop/net.juckel.jruby.osgi.slowcalc");
     });
     $('#start_slow_calc').click(function() {
-        $.ajax("/foo/start/net.juckel.jruby.osgi.slowcalc");
+        $.ajax("/services/start/net.juckel.jruby.osgi.slowcalc");
     });
     $('#toggle_test').click(function() {
         shouldRun = !shouldRun;
