@@ -1,41 +1,43 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.juckel.jruby</groupId>
-    <artifactId>parent</artifactId>
+    <artifactId>net.juckel.jruby.parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <properties>
-        <tycho-version>0.12.0</tycho-version>
+        <tycho.version>0.17.0</tycho.version>
     </properties>
-    <repositories>
-        <repository>
-            <id>indigo</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/releases/indigo</url>
-        </repository>
-        <repository>
-            <id>jruby</id>
-            <layout>p2</layout>
-            <url>http://ajuckel.github.com/jruby.p2/</url>
-        </repository>
-    </repositories>
     <build>
         <plugins>
             <plugin>
                 <groupId>org.eclipse.tycho</groupId>
+                <artifactId>target-platform-configuration</artifactId>
+                <version>${tycho.version}</version>
+                <configuration>
+                    <target>
+                        <artifact>
+                            <groupId>net.juckel.jruby</groupId>
+                            <artifactId>net.juckel.jruby.target</artifactId>
+                            <version>1.0.0-SNAPSHOT</version>
+                        </artifact>
+                    </target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
                 <artifactId>tycho-maven-plugin</artifactId>
-                <version>${tycho-version}</version>
+                <version>${tycho.version}</version>
                 <extensions>true</extensions>
             </plugin>
             <plugin>
                 <groupId>org.eclipse.tycho</groupId>
                 <artifactId>tycho-packaging-plugin</artifactId>
-                <version>${tycho-version}</version>
+                <version>${tycho.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.eclipse.tycho</groupId>
                 <artifactId>tycho-compiler-plugin</artifactId>
-                <version>${tycho-version}</version>
+                <version>${tycho.version}</version>
                 <configuration>
                     <source>1.6</source>
                     <target>1.6</target>
@@ -44,11 +46,10 @@
         </plugins>
     </build>
     <modules>
+        <module>net.juckel.jruby.target</module>
         <module>net.juckel.jruby.osgi.web</module>
         <module>net.juckel.jruby.osgi.slowcalc</module>
         <module>net.juckel.jruby.osgi.fastcalc</module>
         <module>net.juckel.jruby.osgi.logconfig</module>
-        <module>org.jruby.jruby.feature</module>
-        <module>org.jruby.jruby.repository</module>
     </modules>
 </project>

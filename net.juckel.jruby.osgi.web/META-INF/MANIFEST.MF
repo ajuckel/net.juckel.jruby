@@ -16,5 +16,5 @@ Export-Package: net.juckel.jruby.osgi;version="1.0.0"
 Bundle-ClassPath: 
  WEB-INF/gems/gems/jruby-rack-1.0.9/lib/jruby-rack-1.0.9.jar,
  .
-Require-Bundle: org.eclipse.equinox.http.servlet;bundle-version="1.1.200",
+Require-Bundle: org.eclipse.jetty.osgi.httpservice;bundle-version="8.1.3",
  org.jruby.jruby;bundle-version="1.6.2"

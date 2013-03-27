@@ -2,29 +2,9 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>net.juckel.jruby</groupId>
-    <artifactId>parent</artifactId>
+    <artifactId>net.juckel.jruby.parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
   </parent>
-  <groupId>net.juckel.jruby</groupId>
   <artifactId>net.juckel.jruby.osgi.logconfig</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>tycho-packaging-plugin</artifactId>
-        <version>${tycho-version}</version>
-      </plugin>
-      <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>tycho-compiler-plugin</artifactId>
-        <version>${tycho-version}</version>
-        <configuration>
-            <source>1.6</source>
-            <target>1.6</target>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
 </project>

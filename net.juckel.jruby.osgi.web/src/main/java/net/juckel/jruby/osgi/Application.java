@@ -33,7 +33,7 @@ public class Application implements IApplication {
 		httpContext = new OSGiHttpContext(bundle);
 		OsgiRackServlet servlet = new OsgiRackServlet(bundle);
 		Hashtable<String, String> initParams = new Hashtable<String, String>();
-		initParams.put("jruby.compat.version", "1.8");
+		initParams.put("jruby.compat.version", "1.9");
 		httpService.registerResources("/", "/WEB-INF/static", httpContext);
 		httpService.registerServlet("/services", servlet, initParams, httpContext);
 		while(keepRunning) {

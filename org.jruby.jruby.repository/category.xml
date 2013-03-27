@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<site>
-   <feature url="features/org.jruby.jruby.feature_1.6.2.jar" id="org.jruby.jruby.feature" version="1.6.2">
-      <category name="jruby"/>
-   </feature>
-   <category-def name="jruby" label="JRuby"/>
-</site>
