@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="sampleapp"
+         point="org.eclipse.core.runtime.applications">
+      <application
+            cardinality="singleton-global"
+            thread="main"
+            visible="true">
+         <run
+               class="net.juckel.jruby.sample.app.JRubySampleApplication">
+         </run>
+      </application>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="net.juckel.jruby.sample.app.sampleapp"
+            name="net.juckel.jruby.sample.product">
+         <property
+               name="appName"
+               value="net.juckel.jruby.sample.product">
+         </property>
+      </product>
+   </extension>
+
+</plugin>

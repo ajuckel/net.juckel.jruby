@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="net.juckel.jruby.sample.product" uid="net.juckel.jruby.sample.product" id="net.juckel.jruby.sample.app.product" application="net.juckel.jruby.sample.app.sampleapp" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
+
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
+   </launcherArgs>
+
+   <windowImages/>
+
+
+   <launcher>
+      <solaris/>
+      <win useIco="false">
+         <bmp/>
+      </win>
+   </launcher>
+
+
+   <vm>
+   </vm>
+
+
+   <plugins>
+   </plugins>
+
+   <features>
+      <feature id="org.eclipse.rcp" version="4.2.2.v20130129-152330-7IARAABrMQkGSvMgQnUlz-DQz00h"/>
+      <feature id="org.jruby.feature" version="1.7.3"/>
+      <feature id="net.juckel.jruby.sample.feature" version="1.0.0.qualifier"/>
+      <feature id="org.eclipse.emf.common" version="2.8.0.v20130125-0546"/>
+      <feature id="org.eclipse.emf.ecore" version="2.8.3.v20130125-0546"/>
+   </features>
+
+
+</product>

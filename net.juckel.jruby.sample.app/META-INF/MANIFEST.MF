@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: net.juckel.jruby.sample.app
+Bundle-SymbolicName: net.juckel.jruby.sample.app;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: net.juckel.jruby.service;version="1.0.0",
+ org.osgi.framework;version="1.5.0",
+ org.osgi.util.tracker;version="1.4.0"
+Require-Bundle: org.jruby.jruby;bundle-version="1.7.3",
+ org.eclipse.equinox.app;bundle-version="1.0.0"
+Bundle-ActivationPolicy: lazy
