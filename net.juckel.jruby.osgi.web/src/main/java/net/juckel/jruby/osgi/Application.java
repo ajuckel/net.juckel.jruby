@@ -20,14 +20,14 @@ import org.osgi.util.tracker.ServiceTracker;
 
 public class Application implements IApplication {
 
-	private ServiceTracker<HttpService, HttpService> httpServiceTracker;
+	private ServiceTracker httpServiceTracker;
 	private HttpContext httpContext;
 	private volatile boolean keepRunning = true;
 
 	//	@Override
 	public Object start(IApplicationContext context) throws Exception {
 		Bundle bundle = FrameworkUtil.getBundle(Application.class);
-		httpServiceTracker = new ServiceTracker<HttpService, HttpService>(bundle.getBundleContext(), HttpService.class.getName(), null);
+		httpServiceTracker = new ServiceTracker(bundle.getBundleContext(), HttpService.class.getName(), null);
 		httpServiceTracker.open();
 		HttpService httpService = (HttpService) httpServiceTracker.getService();
 		httpContext = new OSGiHttpContext(bundle);
@@ -78,7 +78,8 @@ public class Application implements IApplication {
 		
 		@SuppressWarnings("unused")
 		public Set<String> getResourcePaths(String path) {
-			Enumeration<String> strings = bundle.getEntryPaths(path);
+			@SuppressWarnings("unchecked")
+            Enumeration<String> strings = bundle.getEntryPaths(path);
 			Set<String> stringSet = new HashSet<String>();
 			while(strings.hasMoreElements()) {
 				stringSet.add("/" + strings.nextElement());

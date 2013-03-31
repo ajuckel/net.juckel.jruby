@@ -1,3 +1,5 @@
 require 'java'
-import 'net.juckel.jruby.sample.app.JRubySampleApplication'
-puts JRubySampleApplication.new
+import 'net.juckel.jruby.sample.app.IRuntime'
+def calc x, y
+  x + y
+end

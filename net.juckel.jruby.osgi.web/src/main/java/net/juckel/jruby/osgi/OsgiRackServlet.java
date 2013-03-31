@@ -18,7 +18,6 @@ public class OsgiRackServlet extends RackServlet {
 		this.bundle = bundle;
 	}
 
-
 	@Override
 	public void init(ServletConfig servletConfig) {
         ServletContext ctx = servletConfig.getServletContext();
