@@ -69,6 +69,8 @@
         <module>net.juckel.jruby.osgi.web</module>
         <module>net.juckel.jruby.osgi.slowcalc</module>
         <module>net.juckel.jruby.osgi.fastcalc</module>
+        <module>net.juckel.jruby.osgi.feature</module>
+        <module>net.juckel.jruby.osgi.repository</module>
         <module>net.juckel.jruby.console</module>
         <module>net.juckel.jruby.sample.app</module>
         <module>net.juckel.jruby.sample.feature</module>

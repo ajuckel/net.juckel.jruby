@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/net.juckel.jruby.osgi.feature_1.0.0.qualifier.jar" id="net.juckel.jruby.osgi.feature" version="1.0.0.qualifier">
+      <category name="net.juckel.jruby.osgi.category"/>
+   </feature>
+   <category-def name="net.juckel.jruby.osgi.category" label="JRuby OSGi Utils"/>
+</site>
