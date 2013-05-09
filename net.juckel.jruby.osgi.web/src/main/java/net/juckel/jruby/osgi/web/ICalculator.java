@@ -1,4 +1,4 @@
-package net.juckel.jruby.osgi;
+package net.juckel.jruby.osgi.web;
 
 public interface ICalculator {
 	int add(int x, int y);

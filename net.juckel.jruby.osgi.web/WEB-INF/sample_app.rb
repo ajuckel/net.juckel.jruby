@@ -9,7 +9,7 @@ import 'java.util.concurrent.atomic.AtomicInteger'
 
 class SampleApp
   attr_reader :path
-  osgi_service :calculator, $bundle.bundle_context, "net.juckel.jruby.osgi.ICalculator"
+  osgi_service :calculator, $bundle.bundle_context, "net.juckel.jruby.osgi.web.ICalculator"
   def initialize(path)
     @path = path
     @bundle_template = ERB.new slurp("/WEB-INF/views/bundle.rhtml")

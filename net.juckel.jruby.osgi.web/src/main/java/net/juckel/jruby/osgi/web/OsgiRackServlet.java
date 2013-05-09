@@ -1,4 +1,4 @@
-package net.juckel.jruby.osgi;
+package net.juckel.jruby.osgi.web;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;

@@ -4,7 +4,7 @@ Bundle-Name: net.juckel.jruby.osgi.web
 Bundle-SymbolicName: net.juckel.jruby.osgi.web;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Bundle-Activator: net.juckel.jruby.osgi.Activator
+Bundle-Activator: net.juckel.jruby.osgi.web.Activator
 Import-Package: javax.servlet;version="[2.5.0,3.0.0)",
  javax.servlet.http;version="2.5.0",
  org.eclipse.equinox.app;version="1.0.0",
@@ -12,9 +12,9 @@ Import-Package: javax.servlet;version="[2.5.0,3.0.0)",
  org.osgi.service.http;version="1.2.1",
  org.osgi.util.tracker
 Bundle-ActivationPolicy: lazy
-Export-Package: net.juckel.jruby.osgi;version="1.0.0"
+Export-Package: net.juckel.jruby.osgi.web;version="1.0.0"
 Bundle-ClassPath: 
  WEB-INF/gems/gems/jruby-rack-1.0.9/lib/jruby-rack-1.0.9.jar,
  .
-Require-Bundle: org.eclipse.equinox.http.registry;bundle-version="1.0.200",
+Require-Bundle: org.eclipse.jetty.osgi.httpservice,
  org.jruby.jruby;bundle-version="1.6.2"

@@ -1,4 +1,4 @@
-package net.juckel.jruby.osgi;
+package net.juckel.jruby.osgi.web;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;

@@ -56,10 +56,10 @@
         // shouldRun = false;
     });
     $('#stop_slow_calc').click(function() {
-        $.ajax("/services/stop/net.juckel.jruby.osgi.slowcalc");
+        $.ajax("/services/stop/net.juckel.jruby.osgi.web.slowcalc");
     });
     $('#start_slow_calc').click(function() {
-        $.ajax("/services/start/net.juckel.jruby.osgi.slowcalc");
+        $.ajax("/services/start/net.juckel.jruby.osgi.web.slowcalc");
     });
     $('#toggle_test').click(function() {
         shouldRun = !shouldRun;

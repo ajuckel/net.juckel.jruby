@@ -1,9 +1,9 @@
-package net.juckel.jruby.osgi.fastcalc;
+package net.juckel.jruby.osgi.web.fastcalc;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import net.juckel.jruby.osgi.ICalculator;
+import net.juckel.jruby.osgi.web.ICalculator;
 
 public class FastCalculator implements ICalculator {
 	private List<Integer> fibCache;

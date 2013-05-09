@@ -1,4 +1,4 @@
-package net.juckel.jruby.osgi;
+package net.juckel.jruby.osgi.web;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

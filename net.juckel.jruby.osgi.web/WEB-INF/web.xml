@@ -5,7 +5,7 @@
 	<servlet>
 	    <display-name>Foo Servlet</display-name>
 	    <servlet-name>Foo</servlet-name>
-		<servlet-class>net.juckel.jruby.osgi.FooServlet</servlet-class>
+		<servlet-class>net.juckel.jruby.osgi.web.FooServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 	  <servlet-name>Foo</servlet-name>

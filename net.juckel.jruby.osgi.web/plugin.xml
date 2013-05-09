@@ -8,7 +8,7 @@
             thread="main"
             visible="true">
          <run
-               class="net.juckel.jruby.osgi.Application">
+               class="net.juckel.jruby.osgi.web.Application">
          </run>
       </application>
    </extension>

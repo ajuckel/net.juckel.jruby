@@ -1,6 +1,6 @@
-package net.juckel.jruby.osgi.slowcalc;
+package net.juckel.jruby.osgi.web.slowcalc;
 
-import net.juckel.jruby.osgi.ICalculator;
+import net.juckel.jruby.osgi.web.ICalculator;
 
 public class SlowCalculator implements ICalculator {
 	@Override

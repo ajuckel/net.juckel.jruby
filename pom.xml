@@ -65,10 +65,10 @@
     </build>
     <modules>
         <module>net.juckel.jruby.target</module>
+        <module>net.juckel.jruby.osgi</module>
         <module>net.juckel.jruby.osgi.web</module>
         <module>net.juckel.jruby.osgi.slowcalc</module>
         <module>net.juckel.jruby.osgi.fastcalc</module>
-        <module>net.juckel.jruby.service</module>
         <module>net.juckel.jruby.console</module>
         <module>net.juckel.jruby.sample.app</module>
         <module>net.juckel.jruby.sample.feature</module>
